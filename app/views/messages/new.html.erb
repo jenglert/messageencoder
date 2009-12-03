@@ -1,0 +1,21 @@
+<div class="createSecretMessage">
+	<h1>Create a Secret Message</h1>
+	<% form_for Message.new do |f| %>
+		Message <br />
+		<%= f.text_field :message, :class => 'message' %>
+		<br />
+		<br />
+		Question: <br />
+		<%= f.text_field :question, :class => 'question' %>
+		<br />
+		<br />
+		Answer: <br />
+		<%= f.text_field :answer, :class => 'answer' %>
+		
+		<br />
+		<br />
+		
+		<%= submit_tag 'Make it a secret!' %>
+		
+	<% end %>
+</div>

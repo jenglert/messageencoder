@@ -1,0 +1,14 @@
+<html>
+<head>
+	<title>Message Encoder</title>
+	<%= stylesheet_link_tag "main" %>
+	
+</head>
+<body>
+	<div class="errors">
+		<%= flash[:errors] %>
+		<%= flash[:messages] %>
+	</div>
+	<%= yield %>
+</body>
+</html>

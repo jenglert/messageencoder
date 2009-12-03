@@ -1,0 +1,15 @@
+<div class="viewAMessage">
+	<h1>Someone Sent You A Secret Message</h1>
+	
+	<h4>Answer the following question to decode the message
+	<% form_tag :controller => 'messages', :action => 'guess' do %>
+		<%= text_field_tag :guess %>
+		<%= hidden_field_tag :message_id, @message.id %>
+		<%= submit_tag 'Guess' %>
+	<% end %>
+	</h4>
+	<h3><%= @message.question %></h3>
+	<div>
+		<%= @message.encoded_message %>
+	</div>
+</div>
