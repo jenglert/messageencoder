@@ -2,7 +2,7 @@
 	<h1>Create a Secret Message</h1>
 	<% form_for Message.new do |f| %>
 		Message <br />
-		<%= f.text_field :message, :class => 'message' %>
+		<%= f.text_area :message, :class => 'message resizable' %>
 		<br />
 		<br />
 		Question: <br />
