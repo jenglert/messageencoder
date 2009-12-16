@@ -1,3 +1,7 @@
+
+BODY { background: #EEE url(/images/letter_background.jpg) center top no-repeat fixed; }
+.bodyContent    { z-index: 999; backround-color: transparent;}
+
 .createSecretMessage .message  { width: 600px; height: 100px;}
 .createSecretMessage .question { width: 600px; } 
 .createSecretMessage .answer   { width: 400px; }
