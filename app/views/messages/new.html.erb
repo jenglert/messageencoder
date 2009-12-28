@@ -1,86 +1,136 @@
 <div class="createSecretMessage">
-	<h1>Create a Secret Message</h1>
-	<% form_for Message.new do |f| %>
-		Message <br />
-		<%= f.text_area :message, :class => 'message resizable' %>
-		<br />
-		<br />
-		Question: <br />
-		<%= f.text_field :question, :class => 'question' %>
-		<br />
-		<br />
-		Answer: <br />
-		<%= f.text_field :answer, :class => 'answer' %>
-		
-		<br />
-		<br />
-		
-		<%= submit_tag 'Make it a secret!' %>
-		
+	<h1>Twist That Text</h1>
+	<h2 class="overview">Send your friends a secret encoded message. They will need to know something about you to decode the message!</h2>
+	<%= custom_error_message_for @message %>
+	<% form_for @message do |f| %>
+
+		<div class="floatLeft">
+			
+			<div class="outlinedSection">
+				<div class="instruction">
+					<span class="step">Step #1</span>Enter your secret message here.  Your friend will get this message when they answer your question correctly
+				</div>
+				<div class="message">
+					<%= f.text_area :message, :class => 'resizable' %>
+				</div>
+			</div>
+			
+			<div class="section">
+				<div class="difficulty">
+					<div class="instruction">
+						<span class="step">Step #2</span>Choose how hard you want to make it on your friends
+					</div>
+					<%= select :message, :difficulty, message_difficulty_choices(@message), {}, { :onchange => 'hideShowDifficultyInstructions()' } %>
+				</div>
+				<div id="difficultInstruction" class="difficultyInstruction">
+					<div class="noneDifficulty <%= show_iff_param_equals 'message.difficulty', '' %>">
+						<div class="difficultyHeader none">
+							Select a difficulty
+						</div>
+						<div class="moreInfoAboutSelection">
+							We'll tell you about the different choices here
+						</div>
+					</div>
+					<div class="easyDifficulty <%= show_iff_param_equals 'message.difficulty', '1' %>">
+						<div class="difficultyHeader easy">
+							Easy
+						</div>
+						<ol>
+							<li>Multiple choice</li>
+							<li>Try only once</li>
+							<li>Pretty easy... huh?</li>
+						</ol>
+					</div>
+					<div class="mediumDifficulty <%= show_iff_param_equals 'message.difficulty', '2' %>">
+						<div class="difficultyHeader medium">
+							Medium
+						</div>
+						<ol>
+							<li>Exact match required</li>
+							<li>Up to 3 hints</li>
+							<li>Capitalization not req.</li>
+						</ol>
+					</div>
+					<div class="hardDifficulty <%= show_iff_param_equals 'message.difficulty', '3' %>">
+						<div class="difficultyHeader hard">
+							Hard
+						</div>
+						<ol>
+							<li>Exact match required</li>
+							<li>No hints</li>
+							<li>Capitalization not req.</li>
+						</ol>
+					</div>
+				</div>
+				<div class="clearBoth"></div>
+			</div>
+			
+			<div class="outlinedSection">
+				
+				<div class="instruction">
+					<span class="step">Step #3</span>Choose a secret question and answer
+				</div>	
+			
+				<div class="questionAndAnswer">
+					<div class="question">
+						Question
+						<%= f.text_area :question, :class => 'resizable' %>
+					</div>
+					<div class="answer">
+						Answer
+						<div>
+							<%= f.text_field :answer %>
+						</div>
+					</div>
+
+					<div class="multipleChoiceAnswers <%= show_iff_param_equals 'message.difficulty', '1' %>">
+						<% for num in 2..7 %>
+							<div class="answer answer<%= num %> <%= show_message_answer(@message, num) ? '' : 'displayNone' %>">
+								<%= num.human_readable_numbering %> Answer:
+								<div>
+									<%= f.text_field "answer#{num}" %>
+								</div>
+							</div>
+						<% end %>
+						
+						<a href="javascript:showAnotherAnswer()" class="showAnother showAnother floatRight">(Add Another Answer)</a>
+						<div class="clearBoth"></div>
+					</div>
+					
+					<div class="hintsSection <%= show_iff_param_equals 'message.difficulty', '2' %> ">
+						<h3 class="hints">
+							Hints
+						</h3>
+						<% for num in 1..3 %>
+							<div class="hint hint<%= num %> <%= show_message_hint(@message, num) ? '' : 'displayNone' %>">
+								<%= num.human_readable_numbering %> Hint:
+								<div>
+									<%= f.text_area "hint#{num}", :class => 'resizable' %>
+								</div>
+							</div>
+						<% end %>
+						
+						<a href="javascript:showAnotherHint()" class="showAnotherHint showAnother floatRight">(Add Another Hint)</a>
+						<div class="clearBoth"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="options floatRight">
+			<div class="step">Additional Options</div>
+			
+			<div class="sendRecipientEmail">
+				<input type="checkbox" id="sendRecipientEmailCheckbox" name="sendRecipientEmailCheckbox" onchange="javascript:hideShowRecipientEmail()" <%= '"checked="true"' if params[:sendRecipientEmailCheckbox]%> ></input>
+					Send your message in an email
+				<div class="small note">(you can still send a link)</div>
+				<div class="recipientEmail <%= show_iff_param_exists 'sendRecipientEmailCheckbox' %>">
+					email: <%= f.text_field :recipient_email_address %>
+				</div>
+			</div>
+			<%= submit_tag 'Twist That Txt', :class => 'submit' %>
+		</div>
+		<div class="clearBoth"></div>
+	
 	<% end %>
-	hi
-	<br/>
-	hi<br/>h	<br/>hi	<br/>hi	<br/>hi	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hihi
-	<br/>
-	hi<br/>h	<br/>hi	<br/>hi	<br/>hi	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>
-	hi<br/>h	<br/>hi	<br/>hi	<br/>hi	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>
-	hi<br/>h	<br/>hi	<br/>hi	<br/>hi	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>hi
-	<br/>
+
 </div>

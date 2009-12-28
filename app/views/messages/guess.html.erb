@@ -1,1 +1,10 @@
-<%= @message.message%>
+<div class="correctGuess">
+	
+	<h1>You guessed correctly!</h1>
+
+	<h4>Here is the decoded version of your message</h4>
+	<div class="message">
+		<%= @message.message.htmlize %>
+	</div>
+	
+</div>

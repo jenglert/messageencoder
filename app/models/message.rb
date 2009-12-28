@@ -2,6 +2,56 @@ class Message < ActiveRecord::Base
   
   CHARACTER_SET = ('a' .. 'z').to_a
   
+  MESSAGE_DIFFICULTIES = { 1 => "Easy", 2 => "Medium", 3 => "Hard" }
+  
+  validates_presence_of :message
+  validates_presence_of :question
+  validates_presence_of :answer 
+  
+  validate :difficulty_options
+  
+  # Validation for the different difficulty options
+  def difficulty_options
+    errors.add_to_base("Choose a difficulty") unless MESSAGE_DIFFICULTIES.keys.include? self.difficulty 
+    
+    # Easy difficulty
+    if self.difficulty == 1
+      errors.add_to_base("Enter at least three potential answers") unless self.answers_completed >= 3
+      
+    # Medium difficulty
+    elsif self.difficulty == 2
+      errors.add_to_base("Enter at least one hint") unless self.hints_completed >= 1
+      
+    # Hard difficulty
+    elsif self.difficulty == 3
+      # No extra validations are necessary for hard difficulty
+    end
+  end
+  
+  # Retrieves the number of hints entered
+  def hints_completed
+    hints_completed = 0
+    hints_completed = hints_completed + 1 if self.hint1 and !self.hint1.empty?
+    hints_completed = hints_completed + 1 if self.hint2 and !self.hint2.empty?
+    hints_completed = hints_completed + 1 if self.hint3 and !self.hint3.empty?
+    
+    hints_completed
+  end
+  
+  # Retrieves the number of answers that have been completed.
+  def answers_completed
+    answers_completed = 0
+    answers_completed = answers_completed + 1 if self.answer and !self.answer.empty?
+    answers_completed = answers_completed + 1 if self.answer2 and !self.answer2.empty?
+    answers_completed = answers_completed + 1 if self.answer3 and !self.answer3.empty?
+    answers_completed = answers_completed + 1 if self.answer4 and !self.answer4.empty?
+    answers_completed = answers_completed + 1 if self.answer5 and !self.answer5.empty?
+    answers_completed = answers_completed + 1 if self.answer6 and !self.answer6.empty?
+    answers_completed = answers_completed + 1 if self.answer7 and !self.answer7.empty?
+    
+    answers_completed
+  end
+  
   def encoded_message
     char_set = Array.new(CHARACTER_SET)
     target_set = Array.new()

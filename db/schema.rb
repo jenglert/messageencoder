@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091202035646) do
+ActiveRecord::Schema.define(:version => 20091224235207) do
 
   create_table "messages", :force => true do |t|
     t.text     "message"
@@ -17,6 +17,17 @@ ActiveRecord::Schema.define(:version => 20091202035646) do
     t.string   "answer"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "difficulty"
+    t.string   "recipient_email_address"
+    t.string   "answer2"
+    t.string   "answer3"
+    t.string   "answer4"
+    t.string   "answer5"
+    t.string   "answer6"
+    t.string   "answer7"
+    t.string   "hint1"
+    t.string   "hint2"
+    t.string   "hint3"
   end
 
 end
