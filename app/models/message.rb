@@ -4,11 +4,19 @@ class Message < ActiveRecord::Base
   
   MESSAGE_DIFFICULTIES = { 1 => "Easy", 2 => "Medium", 3 => "Hard" }
   
+  attr_accessor :recipient_email_address_checkbox
+  
   validates_presence_of :message
   validates_presence_of :question
   validates_presence_of :answer 
   
-  validate :difficulty_options
+  validate :difficulty_options, :additional_options
+  
+  # Validations for additional options section.
+  def additional_options
+    puts self.recipient_email_address_checkbox
+    errors.add_to_base("Enter your recipient's email address") if self.recipient_email_address_checkbox == "1" and  (!self.recipient_email_address or self.recipient_email_address.empty?)
+  end
   
   # Validation for the different difficulty options
   def difficulty_options
@@ -27,7 +35,7 @@ class Message < ActiveRecord::Base
       # No extra validations are necessary for hard difficulty
     end
   end
-  
+
   # Retrieves the number of hints entered
   def hints_completed
     hints_completed = 0

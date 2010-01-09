@@ -1,0 +1,32 @@
+<div class="showDispersalInformation">
+	<h1>Get the message out!</h1>
+	<h2 class="overview">Choose one of the following methods to get your message to your friend.</h2>
+	
+	<div class="deliveryOption">
+		<span class="optionNumber">1.</span>
+		<span class="optionName">Bitly</span>
+		<div class="optionUrl" id="shortUrlContainer">
+			<%= short_url_for @message %>
+		</div>
+		<div class="viewIcon">
+			<% link_to short_url_for @message do %>
+				<img src="/images/inspect_icon.png" title="Visit Link"></img>
+			<% end %>
+		</div>
+	</div>
+	
+	<div class="deliveryOption">
+		<span class="optionNumber">2.</span>
+		<span class="optionName">Full URL</span>
+		<div class="optionUrl" id="fullUrlContainer">
+			<%= full_url_for @message %>
+		</div>
+		<div class="viewIcon">
+			<% link_to full_url_for @message do %>
+				<img src="/images/inspect_icon.png" title="Visit Link"q></img>
+			<% end %>
+		</div>
+	</div>
+	
+	
+</div>

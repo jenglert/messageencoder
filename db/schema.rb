@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091224235207) do
+ActiveRecord::Schema.define(:version => 20091228064411) do
 
   create_table "messages", :force => true do |t|
     t.text     "message"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20091224235207) do
     t.string   "hint1"
     t.string   "hint2"
     t.string   "hint3"
+    t.string   "short_url"
   end
 
 end

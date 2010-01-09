@@ -28,6 +28,7 @@ function hideShowDifficultyInstructions() {
 	// Easy 
 	jQuery('.easyDifficulty').showiff(jQuery('#message_difficulty').val() == 1);
 	jQuery('.multipleChoiceAnswers').showiff(jQuery('#message_difficulty').val() == 1);
+	jQuery('#correctAnswerBlock').showiff(jQuery('#message_difficulty').val() == 1);
 	
 	// Medium
 	jQuery('.mediumDifficulty').showiff(jQuery('#message_difficulty').val() == 2);
@@ -68,7 +69,7 @@ function showAnotherHint() {
 * Function that will hide or show the recipient's email addresses
 */
 function hideShowRecipientEmail() {
-	jQuery('.recipientEmail').showiff(jQuery('#sendRecipientEmailCheckbox').checked());
+	jQuery('.recipientEmail').showiff(jQuery('#message_recipient_email_address_checkbox').checked());
 }
 
 /**
@@ -79,4 +80,30 @@ jQuery(document).ready( function() {
 	// Supports the text area resizing capabilities.
 	jQuery('textarea.resizable:not(.processed)').TextAreaResizer();
 });
+
+/*
+* Javascript/flash copy to clipboard functionality
+*/
+function copy_to_clipboard(text)  
+  {  
+      if(window.clipboardData)  
+      {  
+      window.clipboardData.setData('text',text);  
+      }  
+      else  
+      {  
+          var clipboarddiv=document.getElementById('divclipboardswf');  
+      if(clipboarddiv==null)  
+      {  
+         clipboarddiv=document.createElement('div');  
+             clipboarddiv.setAttribute("name", "divclipboardswf");  
+         clipboarddiv.setAttribute("id", "divclipboardswf");  
+         document.body.appendChild(clipboarddiv);  
+      }  
+          clipboarddiv.innerHTML='<embed src="/clipboard.swf" FlashVars="clipboard='+  
+  encodeURIComponent(text)+'" width="0" height="0" type="application/x-shockwave-flash"></embed>';  
+      }  
+      alert('The text is copied to your clipboard...');  
+      return false;  
+  }
 

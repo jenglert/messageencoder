@@ -7,17 +7,21 @@
 
 A, A:visited, 
 A:hover, A:active  { outline: 0px; color: #1EC3EA; }
+A IMG              { outline: none; border: 0;}
 
 BODY        { background-color: #88A19F; margin: 0px;        }
 H1, H2      { padding: 0 0 5px 0; margin: 0;  }
 FORM        { padding: 0; margin: 0;          }
 
 .small      { font-size: 12px; color: gray;   }
-.badges     { padding-top: 20px; padding-left: 752px;}
+.badges     { text-align: center; padding-top: 25px; padding-left: 750px; }
 
 /* Layout Styles */
-.bodyContent   { width: 800px; background-color: white; padding: 15px 15px 15px 15px; margin: auto; }
-IMG.logo       { margin: auto; display: block;}
+.bodyContent   { width: 800px; background-color: white; padding: 5px 15px 15px 15px; margin: auto; }
+IMG.logo       { margin: auto; display: block; }
+.topBorder     { margin: auto; display: block; }
+.bottomBorder  { margin: auto; display: block; }
+.overview      { font-size: 15px; color: gray; padding: 0 0 15px 0; }
 
 /* Error Messages Block  */
 .errorMessages          { padding-left: 18px; }
@@ -42,8 +46,8 @@ IMG.logo       { margin: auto; display: block;}
 .createSecretMessage .hint INPUT      { width: 300px;                                    }
 .createSecretMessage .section         { width: 475px;   margin: 15px 0;                       }
 .createSecretMessage .outlinedSection { border: 2px solid gray;	margin: 15px 2px; width: 459px;	padding: 8px 4px; }
+.createSecretMessage .lastOutlinedSection { border: 2px solid gray;	margin: 15px 2px 0px 2px; width: 459px;	padding: 8px 4px; }
 .createSecretMessage .instruction     { padding: 0 15px;                				     }
-.createSecretMessage .overview        { font-size: 15px; color: gray; padding: 0 0 15px 0; }
 
 .createSecretMessage .difficultyHeader { text-align: center; font-size: 18px; font-weight: bold; }
 .createSecretMessage .hard   { color: red;    }
@@ -68,11 +72,21 @@ IMG.logo       { margin: auto; display: block;}
 						  margin: 0 0 20px 25px; position: relative; }
 .viewAMessage .questionMark { position: absolute; left: 415px; top:5px; font-size: 70px; color: #1EC3EA; font-weight: bold; }
 .viewAMessage .quess        { margin: 0 0 0 25px; }
-.viewAMessage .encodedMessage { border: 2px solid gray; background-color: #F5F5F5; width: 500px; padding: 5px; margin: 0 0 0 25px;}			
+.viewAMessage .encodedMessage { border: 2px solid gray; background-color: #F5F5F5; width: 500px; padding: 5px; margin: 0 0 0 25px;}		
+.viewAMessage .guessMC UL   { padding-left: 52px; margin-top: 0px; }	
 
 /** Correct guess page. */
 .correctGuess H4       { margin: 5px 0 15px 0;}
 .correctGuess .message { border: 2px solid gray; background-color: #F5F5F5; width: 500px; padding: 5px; margin: 0 0 0 25px; }
+
+/** Delivery Option Page */
+.deliveryOption               { padding-bottom: 15px; position: relative; }
+.deliveryOption .optionNumber { font-size: 19px; color: #1EC3EA; font-weight: bold; padding-right: 10px;}
+.deliveryOption .optionName   { font-size: 17px; }
+.deliveryOption .optionUrl    { font-size: 19px; border: 2px solid gray; background-color: #F5F5F5; margin-left: 20px; width: 400px;
+	                            padding: 3px;}
+.deliveryOption .viewIcon     { position: absolute; top: 27px; left: 405px; }
+.deliveryOption .copyIcon     { position: absolute; top: 26px; left: 382px; }
 
 /**
 * Grippie related styles

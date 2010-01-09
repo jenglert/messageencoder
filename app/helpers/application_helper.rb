@@ -1,3 +1,5 @@
+require 'url_shortener'
+
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   
@@ -20,6 +22,27 @@ module ApplicationHelper
     return true if number == 2
   
     false
+  end
+  
+  def short_url_for(message)
+    short_url = message.short_url
+    
+    return short_url if short_url
+    
+    bitly = UrlShortener::Authorize.new 'jenglert', 'R_48cb268bf5af653945be32904d39c302'
+    client = UrlShortener::Client.new(bitly)
+    
+    tt_url = full_url_for message
+    shorten = client.shorten(tt_url)
+    short_url = shorten.urls
+    message.update_attribute(:short_url, short_url)
+    
+    return short_url
+  end
+  
+  # Calculates the full URL for a specified message
+  def full_url_for(message) 
+    url_for :controller => 'messages', :action => 'show', :id => message.id, :only_path => false
   end
   
   # Creates a custom HTML error messages prompt for the user.
@@ -49,6 +72,11 @@ module ApplicationHelper
     end
     
     message_difficulty_choices
+  end
+
+  # Shows the parameter iff and only iff the parameter doesn't exist
+  def show_iff_param_doesnt_exists(model)
+    model_param(model) ? 'displayNone' : ''
   end
 
   # Returns displayNone iff the model parameters does not exists

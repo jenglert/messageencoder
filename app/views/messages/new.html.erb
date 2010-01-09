@@ -23,7 +23,7 @@
 					<%= select :message, :difficulty, message_difficulty_choices(@message), {}, { :onchange => 'hideShowDifficultyInstructions()' } %>
 				</div>
 				<div id="difficultInstruction" class="difficultyInstruction">
-					<div class="noneDifficulty <%= show_iff_param_equals 'message.difficulty', '' %>">
+					<div class="noneDifficulty <%= show_iff_param_doesnt_exists 'message.difficulty' %>">
 						<div class="difficultyHeader none">
 							Select a difficulty
 						</div>
@@ -65,7 +65,7 @@
 				<div class="clearBoth"></div>
 			</div>
 			
-			<div class="outlinedSection">
+			<div class="lastOutlinedSection">
 				
 				<div class="instruction">
 					<span class="step">Step #3</span>Choose a secret question and answer
@@ -77,18 +77,18 @@
 						<%= f.text_area :question, :class => 'resizable' %>
 					</div>
 					<div class="answer">
-						Answer
+						<span id="correctAnswerBlock" class="<%= show_iff_param_equals 'message.difficulty', '1' %>">Correct</span> Answer
 						<div>
 							<%= f.text_field :answer %>
 						</div>
 					</div>
 
 					<div class="multipleChoiceAnswers <%= show_iff_param_equals 'message.difficulty', '1' %>">
-						<% for num in 2..7 %>
-							<div class="answer answer<%= num %> <%= show_message_answer(@message, num) ? '' : 'displayNone' %>">
-								<%= num.human_readable_numbering %> Answer:
+						<% for num in 1..6 %>
+							<div class="answer answer<%= num + 1 %> <%= show_message_answer(@message, num + 1) ? '' : 'displayNone' %>">
+								<%= (num + 1).human_readable_numbering %> Wrong Answer:
 								<div>
-									<%= f.text_field "answer#{num}" %>
+									<%= f.text_field "answer#{num + 1}" %>
 								</div>
 							</div>
 						<% end %>
@@ -120,10 +120,10 @@
 			<div class="step">Additional Options</div>
 			
 			<div class="sendRecipientEmail">
-				<input type="checkbox" id="sendRecipientEmailCheckbox" name="sendRecipientEmailCheckbox" onchange="javascript:hideShowRecipientEmail()" <%= '"checked="true"' if params[:sendRecipientEmailCheckbox]%> ></input>
+				<%= f.check_box :recipient_email_address_checkbox, :onchange => "javascript:hideShowRecipientEmail()" %>
 					Send your message in an email
 				<div class="small note">(you can still send a link)</div>
-				<div class="recipientEmail <%= show_iff_param_exists 'sendRecipientEmailCheckbox' %>">
+				<div class="recipientEmail <%= @message.recipient_email_address_checkbox == "1" ? '' : 'displayNone' %>">
 					email: <%= f.text_field :recipient_email_address %>
 				</div>
 			</div>
