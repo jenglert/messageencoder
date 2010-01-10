@@ -1,5 +1,13 @@
 class MessagesController < ApplicationController
   
+  after_filter :send_message_alert_email, :only => :show_dispersal_information
+  
+  def send_message_alert_email
+    if @message.recipient_email_address
+      UserMailer.deliver_message_alert @message
+    end
+  end
+  
   def new
     @message = Message.new( :recipient_email_address_checkbox => "1" )
   end

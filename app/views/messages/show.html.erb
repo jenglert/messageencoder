@@ -9,12 +9,19 @@
 	<% if @message.difficulty == 1 %>
 		<h4>Multiple Choice: Pick Carefully!</h4>
 		<div class="guessMC">
-			<ul type="A">
+			<table>
+				<% i = 1 %>
 				<% for answer in @answers %>
-				
-					<li><%= link_to answer, :controller => 'messages', :action => 'guess', :guess => answer, :id => @message.id %></li>
+					<tr>
+						<td class="letter"><%= i.to_letter %></td>
+						<td class="answerCell"><%= answer %></td>
+						<td class="selection" >
+							<%= link_to 'guess', { :controller => 'messages', :action => 'guess', :guess => answer, :id => @message.id }, { :class => 'guessLink' } %>
+						</td>
+					</tr>
+					<% i = i + 1 %>
 				<% end %>
-			</ul>
+			</table>
 			
 		</div>
 	<% end %>

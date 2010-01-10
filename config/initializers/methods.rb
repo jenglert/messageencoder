@@ -8,6 +8,10 @@ class Fixnum
     
     NUMERICAL_ADJECTIVES[self - 1]
   end
+  
+  def to_letter
+    (self + 64).chr
+  end
 end
 
 class String 

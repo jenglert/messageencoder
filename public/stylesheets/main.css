@@ -6,7 +6,7 @@
 .displayNone      { display: none;   }
 
 A, A:visited, 
-A:hover, A:active  { outline: 0px; color: #1EC3EA; }
+A:hover, A:active  { outline: 0px; color: #1EC3EA; text-decoration: none; }
 A IMG              { outline: none; border: 0;}
 
 BODY        { background-color: #88A19F; margin: 0px;        }
@@ -73,7 +73,10 @@ IMG.logo       { margin: auto; display: block; }
 .viewAMessage .questionMark { position: absolute; left: 415px; top:5px; font-size: 70px; color: #1EC3EA; font-weight: bold; }
 .viewAMessage .quess        { margin: 0 0 0 25px; }
 .viewAMessage .encodedMessage { border: 2px solid gray; background-color: #F5F5F5; width: 500px; padding: 5px; margin: 0 0 0 25px;}		
-.viewAMessage .guessMC UL   { padding-left: 52px; margin-top: 0px; }	
+.viewAMessage .guessMC TABLE { padding-left: 20px; }
+.viewAMessage .guessMC TD.selection    { border: solid #1EC3EA 2px; }
+.viewAMessage .guessMC .letter { padding-right: 25px; }
+.viewAMessage .answerCell    { width: 350px; }
 
 /** Correct guess page. */
 .correctGuess H4       { margin: 5px 0 15px 0;}

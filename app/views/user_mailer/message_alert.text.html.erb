@@ -1,0 +1,15 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>  
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
+	</head>  
+	<body>  
+		<h1>You have a Secret Message Waiting</h1>
+		<p>  
+			Visit this <a href="<%= @message.short_url %>">link</a> to get your secret message!
+		</p>
+		<p>
+			Full link here: <%= @message.short_url %>
+		</p>
+	</body>
+</html> 
