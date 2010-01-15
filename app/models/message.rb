@@ -16,6 +16,8 @@ class Message < ActiveRecord::Base
   def additional_options
     puts self.recipient_email_address_checkbox
     errors.add_to_base("Enter your recipient's email address") if self.recipient_email_address_checkbox == "1" and  (!self.recipient_email_address or self.recipient_email_address.empty?)
+    errors.add_to_base("Enter a message for your friend") if self.recipient_email_address_checkbox == "1" and  (!self.email_from_message or self.email_from_message.empty?)
+    errors.add_to_base("Enter your name") if self.recipient_email_address_checkbox == "1" and  (!self.email_from_name or self.email_from_name.empty?)
   end
   
   # Validation for the different difficulty options

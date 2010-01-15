@@ -69,7 +69,7 @@ function showAnotherHint() {
 * Function that will hide or show the recipient's email addresses
 */
 function hideShowRecipientEmail() {
-	jQuery('.recipientEmail').showiff(jQuery('#message_recipient_email_address_checkbox').checked());
+	jQuery('.showOnRecipientEmail').showiff(jQuery('#message_recipient_email_address_checkbox').checked());
 }
 
 /**

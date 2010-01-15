@@ -60,7 +60,10 @@ IMG.logo       { margin: auto; display: block; }
 .createSecretMessage .difficulty           { float: left; width: 220px; height: 110px; padding: 8px 4px; border: 2px solid gray; margin: 2px; }
 .createSecretMessage .difficulty SELECT  { margin-left: 62px; margin-top: 15px;     }
 
-.createSecretMessage .recipientEmail     { padding-left: 10px; padding-top: 5px; }
+.createSecretMessage .recipientEmail,
+.createSecretMessage .recipientFromName,
+.createSecretMessage .recipientFromMessage { padding-left: 10px;  padding-top: 5px; }
+.createSecretMessage .recipientFromMessage TEXTAREA { width: 265px; height: 65px;}
 .createSecretMessage .sendRecipientEmail .NOTE { padding-left: 23px; }
 .createSecretMessage .recipientEmail INPUT { size: 50px; }
 .createSecretMessage .showAnother          { font-size: 13px; padding-top: 15px; padding-right: 124px; }

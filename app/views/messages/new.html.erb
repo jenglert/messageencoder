@@ -121,10 +121,22 @@
 			
 			<div class="sendRecipientEmail">
 				<%= f.check_box :recipient_email_address_checkbox, :onchange => "javascript:hideShowRecipientEmail()" %>
-					Send your message in an email
+					<label for="message_recipient_email_address_checkbox">Send your message in an email</label>
 				<div class="small note">(you can still send a link)</div>
-				<div class="recipientEmail <%= @message.recipient_email_address_checkbox == "1" ? '' : 'displayNone' %>">
-					email: <%= f.text_field :recipient_email_address %>
+				<div class="recipientEmail showOnRecipientEmail <%= @message.recipient_email_address_checkbox == "1" ? '' : 'displayNone' %>">
+					<span title="Enter your friend's email address so we can let them know they have a secret message waiting">
+						email: <%= f.text_field :recipient_email_address %>
+					</span>
+				</div>
+				<div class="recipientFromName showOnRecipientEmail <%= @message.recipient_email_address_checkbox == "1" ? '' : 'displayNone' %>">
+					<span title="Enter your name so your friend will know who it's from">
+						your name: <%= f.text_field :email_from_name, :style => "width: 190px" %>
+					</span>
+				</div>
+				<div class="recipientFromMessage showOnRecipientEmail <%= @message.recipient_email_address_checkbox == "1" ? '' : 'displayNone' %>">
+					<span title="Enter a message for your friend">
+						message: <%= f.text_area :email_from_message, :class => 'resizable' %>
+					</span>
 				</div>
 			</div>
 			<%= submit_tag 'Twist That Txt', :class => 'submit' %>
