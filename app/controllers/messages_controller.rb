@@ -40,7 +40,7 @@ class MessagesController < ApplicationController
   def guess
     @message = Message.find_by_id(params[:id])
     
-    if params[:guess] != @message.answer
+    if params[:guess].upcase != @message.answer.upcase
       flash[:errors] = 'Incorrect guess'
       redirect_to @message
     end
