@@ -42,6 +42,7 @@ class MessagesController < ApplicationController
     
     if params[:guess].upcase != @message.answer.upcase
       flash[:errors] = 'Incorrect guess'
+      session[:incorrect_guess_made] = true
       redirect_to @message
     end
     

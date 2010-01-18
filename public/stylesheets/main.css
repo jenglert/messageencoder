@@ -22,6 +22,9 @@ IMG.logo       { margin: auto; display: block; }
 .topBorder     { margin: auto; display: block; }
 .bottomBorder  { margin: auto; display: block; }
 .overview      { font-size: 15px; color: gray; padding: 0 0 15px 0; }
+.flashErrors   { color: red; padding-left: 2px; }
+.flashMessages { }
+.bottomAd      { margin: auto; }
 
 /* Error Messages Block  */
 .errorMessages          { padding-left: 18px; }
@@ -48,6 +51,8 @@ IMG.logo       { margin: auto; display: block; }
 .createSecretMessage .outlinedSection { border: 2px solid gray;	margin: 15px 2px; width: 459px;	padding: 8px 4px; }
 .createSecretMessage .lastOutlinedSection { border: 2px solid gray;	margin: 15px 2px 0px 2px; width: 459px;	padding: 8px 4px; }
 .createSecretMessage .instruction     { padding: 0 15px;                				     }
+.createSecretMessage .correctAnswer   { color: green; }
+.createSecretMessage .wrongAnswer     { color: red; }
 
 .createSecretMessage .difficultyHeader { text-align: center; font-size: 18px; font-weight: bold; }
 .createSecretMessage .hard   { color: red;    }
@@ -73,9 +78,13 @@ IMG.logo       { margin: auto; display: block; }
 .viewAMessage H4         { margin: 10px;}
 .viewAMessage .question { border: 2px solid gray; background-color: #F5F5F5; width: 400px; height: 70px; padding: 5px; 
 						  margin: 0 0 20px 25px; position: relative; }
-.viewAMessage .questionMark { position: absolute; left: 415px; top:5px; font-size: 70px; color: #1EC3EA; font-weight: bold; }
+.viewAMessage .questionMark,
+.viewAMessage .incorrectQuestionMark { position: absolute; left: 415px; top:5px; font-size: 70px; color: #1EC3EA; font-weight: bold; }
+.viewAMessage .questionMark { color: #1EC3EA; }
+.viewAMessage .incorrectQuestionMark { color: red; }
 .viewAMessage .quess        { margin: 0 0 0 25px; }
-.viewAMessage .encodedMessage { border: 2px solid gray; background-color: #F5F5F5; width: 500px; padding: 5px; margin: 0 0 0 25px;}		
+.viewAMessage .incorrectGuess INPUT { border: 2px solid red; }
+.viewAMessage .encodedMessage { border: 2px solid gray; background-color: #F5F5F5; width: 500px; padding: 5px; margin: 0 0 0 25px; }		
 .viewAMessage .guessMC TABLE { padding-left: 20px; }
 .viewAMessage .guessMC TD.selection    { border: solid #1EC3EA 2px; }
 .viewAMessage .guessMC .letter { padding-right: 25px; }

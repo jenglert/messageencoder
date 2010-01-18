@@ -12,13 +12,30 @@
 	
 	<img class="topBorder" src="/images/rounded_corners/white_top.png"></img>
 	<div class="bodyContent">
-		<div class="errors">
+		<div class="flashErrors">
 			<%= flash[:errors] %>
+		</div>
+		<div class="flashMessages">
 			<%= flash[:messages] %>
 		</div>
 		<%= yield %>
 	</div>
 	<img class="bottomBorder" src="/images/rounded_corners/white_bottom.png"></img>
+	
+	<div class="bottomAd">
+		<script type="text/javascript"><!--
+		google_ad_client = "pub-7279077462237001";
+		/* TwistedTxt */
+		google_ad_slot = "5714289882";
+		google_ad_width = 728;
+		google_ad_height = 90;
+		//-->
+		</script>
+		<script type="text/javascript"
+		src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+		</script>
+	</div>
+	
 	
 	<div class="badges">
 		<a title="Web Analytics" href="http://getclicky.com/166301"><img alt="Web Analytics" src="http://static.getclicky.com/media/links/badge.gif" border="0" /></a>
@@ -26,5 +43,18 @@
 		<script type="text/javascript">clicky.init(166301);</script>
 		<noscript><p><img alt="Clicky" width="1" height="1" src="http://static.getclicky.com/166301ns.gif" /></p></noscript>
 	</div>
+	
+	
+	<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+	try {
+	var pageTracker = _gat._getTracker("UA-12517764-1");
+	pageTracker._trackPageview();
+	} catch(err) {}</script>
+	
+	
 </body>
 </html>
