@@ -40,4 +40,9 @@
 		<%= @message.encoded_message.htmlize %>
 	</div>
 </div>
+<div class="sendAMessage">
+	<% link_to :controller => 'messages', :action => 'new' do %>
+		<img src="/images/send_a_message_wide.png">
+	<% end %>
+</div>
 <% session[:incorrect_guess_made] = false %>

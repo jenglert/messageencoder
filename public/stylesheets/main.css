@@ -17,14 +17,14 @@ FORM        { padding: 0; margin: 0;          }
 .badges     { text-align: center; padding-top: 25px; padding-left: 750px; }
 
 /* Layout Styles */
-.bodyContent   { width: 800px; background-color: white; padding: 5px 15px 15px 15px; margin: auto; }
+.bodyContent   { width: 800px; background-color: white; padding: 5px 15px 15px 15px; margin: auto; position: relative; }
 IMG.logo       { margin: auto; display: block; }
 .topBorder     { margin: auto; display: block; }
 .bottomBorder  { margin: auto; display: block; }
 .overview      { font-size: 15px; color: gray; padding: 0 0 15px 0; }
 .flashErrors   { color: red; padding-left: 2px; }
 .flashMessages { }
-.bottomAd      { margin: auto; }
+.bottomAd      { text-align: center; padding-top: 30px; }
 
 /* Error Messages Block  */
 .errorMessages          { padding-left: 18px; }
@@ -102,6 +102,9 @@ IMG.logo       { margin: auto; display: block; }
 	                            padding: 3px;}
 .deliveryOption .viewIcon     { position: absolute; top: 27px; left: 405px; }
 .deliveryOption .copyIcon     { position: absolute; top: 26px; left: 382px; }
+
+/** Send a message link */
+.sendAMessage    { position: absolute; top: 61px; left: 542px; }
 
 /**
 * Grippie related styles
