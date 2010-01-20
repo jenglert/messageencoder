@@ -23,7 +23,7 @@ IMG.logo       { margin: auto; display: block; }
 .bottomBorder  { margin: auto; display: block; }
 .overview      { font-size: 15px; color: gray; padding: 0 0 15px 0; }
 .flashErrors   { color: red; padding-left: 2px; }
-.flashMessages { }
+.flashMessages { padding-left: 2px; padding-bottom: 10px; }
 .bottomAd      { text-align: center; padding-top: 30px; }
 
 /* Error Messages Block  */
@@ -86,14 +86,16 @@ IMG.logo       { margin: auto; display: block; }
 .viewAMessage .incorrectGuess INPUT { border: 2px solid red; }
 .viewAMessage .encodedMessage { border: 2px solid gray; background-color: #F5F5F5; width: 500px; padding: 5px; margin: 0 0 0 25px; }		
 .viewAMessage .guessMC TABLE { padding-left: 20px; }
-.viewAMessage .guessMC TD.selection    { border: solid #1EC3EA 2px; }
+.viewAMessage .guessMC TD.selection    { border: solid #1EC3EA 2px; color: #4BB4CA; padding: 3px; background-color: #F0F0F0; }
 .viewAMessage .guessMC .letter { padding-right: 25px; }
 .viewAMessage .answerCell    { width: 350px; }
 
 /** Correct guess page. */
 .correctGuess H4       { margin: 5px 0 15px 0;}
-.correctGuess .message { border: 2px solid gray; background-color: #F5F5F5; width: 500px; padding: 5px; margin: 0 0 0 25px; }
-
+.correctGuess .message { border: 2px solid gray; background-color: #F5F5F5; width: 500px; padding: 5px; margin: 0 0 35px 25px; }
+.correctGuess .sendNewMessage { width: 541px; padding-left: 25px; }
+.correctGuess INPUT    { border: 2px solid #1EC3EA; color: #4BB4CA; margin-top: 20px; font-size: 24px; margin-left: 158px; padding: 5px; }
+ 
 /** Delivery Option Page */
 .deliveryOption               { padding-bottom: 15px; position: relative; }
 .deliveryOption .optionNumber { font-size: 19px; color: #1EC3EA; font-weight: bold; padding-right: 10px;}

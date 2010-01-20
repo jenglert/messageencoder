@@ -2,9 +2,17 @@
 	
 	<h1>You guessed correctly!</h1>
 
-	<h4>Here is the decoded version of your message</h4>
+	<h4>We have decoded your message below!</h4>
 	<div class="message">
 		<%= @message.message.htmlize %>
 	</div>
-	
+
+	<h3>Now send your friend a message back</h3>
+	<div class="sendNewMessage">
+		<% form_for Message.new, :url => { :action => "new" } do |f| %>
+			Enter your message here: 
+			<%= f.text_area :message, :class => "resizable" %>
+			<%= submit_tag "Twist that Txt" %>
+		<% end %>
+	</div>
 </div>

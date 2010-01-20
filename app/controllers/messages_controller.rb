@@ -9,7 +9,12 @@ class MessagesController < ApplicationController
   end
   
   def new
-    @message = Message.new( :recipient_email_address_checkbox => "1" )
+    @message = Message.new( :recipient_email_address_checkbox => "0" )
+    
+    if params[:message]
+      @message.message = params[:message]
+      flash[:messages] = "Just fill out these couple of options to send your message"
+    end
   end
   
   def create
