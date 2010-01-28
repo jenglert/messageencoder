@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100117204307) do
+ActiveRecord::Schema.define(:version => 20100128032316) do
 
   create_table "messages", :force => true do |t|
     t.text     "message"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(:version => 20100117204307) do
     t.string   "email_from_name"
     t.text     "email_from_message"
     t.integer  "attempts"
+    t.boolean  "receipt_notification"
+    t.string   "receipt_notification_email"
+    t.boolean  "receipt_notification_sent"
+  end
+
+  create_table "popup_ads", :force => true do |t|
+    t.integer  "cpl"
+    t.string   "call_to_action"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

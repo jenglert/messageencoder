@@ -7,5 +7,13 @@ class UserMailer < ActionMailer::Base
     sent_on    Time.now
     body       :message => message 
   end
+  
+  def correct_guess_alert(message)
+    recipients    message.receipt_notification_email
+    from          'messages@twistedtxt.com'
+    subject       "Your Message Was Guessed Correctly"
+    sent_on       Time.now
+    body          :message => message
+  end
 
 end

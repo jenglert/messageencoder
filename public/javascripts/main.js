@@ -73,6 +73,28 @@ function hideShowRecipientEmail() {
 }
 
 /**
+* Hides or shows the receipt notification
+*/
+function hideShowReceiptNotification() {
+	jQuery('.receiptNotificationEmail').showiff(jQuery('#message_receipt_notification').checked());
+}
+
+/**
+* Show the popup ad when the forum is submitted
+*/
+function addPopupAdHandler(url) {
+	if (jQuery("FORM #popupadcheckbox").exists()) {
+		jQuery("FORM#new_message")[0].onsubmit = function() {
+			if (jQuery("FORM #popupadcheckbox").checked()) {
+				window.open(url, 'popupAd', 'height=500,width=800');
+				
+				return true;
+			}
+		}
+	}
+}
+
+/**
 * Functionality that should occur when the page loads
 */
 jQuery(document).ready( function() {
@@ -81,29 +103,4 @@ jQuery(document).ready( function() {
 	jQuery('textarea.resizable:not(.processed)').TextAreaResizer();
 });
 
-/*
-* Javascript/flash copy to clipboard functionality
-*/
-function copy_to_clipboard(text)  
-  {  
-      if(window.clipboardData)  
-      {  
-      window.clipboardData.setData('text',text);  
-      }  
-      else  
-      {  
-          var clipboarddiv=document.getElementById('divclipboardswf');  
-      if(clipboarddiv==null)  
-      {  
-         clipboarddiv=document.createElement('div');  
-             clipboarddiv.setAttribute("name", "divclipboardswf");  
-         clipboarddiv.setAttribute("id", "divclipboardswf");  
-         document.body.appendChild(clipboarddiv);  
-      }  
-          clipboarddiv.innerHTML='<embed src="/clipboard.swf" FlashVars="clipboard='+  
-  encodeURIComponent(text)+'" width="0" height="0" type="application/x-shockwave-flash"></embed>';  
-      }  
-      alert('The text is copied to your clipboard...');  
-      return false;  
-  }
 

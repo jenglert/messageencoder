@@ -64,15 +64,18 @@ IMG.logo       { margin: auto; display: block; }
 .createSecretMessage .difficultyInstruction { float: right; width: 220px; height: 110px; padding: 8px 4px; border: 2px solid gray; margin: 2px;}
 .createSecretMessage .difficulty           { float: left; width: 220px; height: 110px; padding: 8px 4px; border: 2px solid gray; margin: 2px; }
 .createSecretMessage .difficulty SELECT  { margin-left: 62px; margin-top: 15px;     }
-
+.createSecretMessage .NOTE { padding-left: 23px; }
+.createSecretMessage .receiptNotification      { padding-top: 10px; }
+.createSecretMessage .receiptNotificationEmail { padding-left: 10px; padding-top: 5px; }
+.createSecretMessage .receiptNotificationEmail INPUT { width: 188px; }
 .createSecretMessage .recipientEmail,
 .createSecretMessage .recipientFromName,
 .createSecretMessage .recipientFromMessage { padding-left: 10px;  padding-top: 5px; }
 .createSecretMessage .recipientFromMessage TEXTAREA { width: 265px; height: 65px;}
-.createSecretMessage .sendRecipientEmail .NOTE { padding-left: 23px; }
 .createSecretMessage .recipientEmail INPUT { size: 50px; }
 .createSecretMessage .showAnother          { font-size: 13px; padding-top: 15px; padding-right: 124px; }
 .createSecretMessage H3.hints              { font-size: 18px; color: gray; margin-bottom: 5px; margin-top: 22px;  }
+.createSecretMessage .popupAd              { padding-top: 10px; }
 
 /* View Message Styles */
 .viewAMessage H4         { margin: 10px;}

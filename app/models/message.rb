@@ -18,6 +18,7 @@ class Message < ActiveRecord::Base
     errors.add_to_base("Enter your recipient's email address") if self.recipient_email_address_checkbox == "1" and  (!self.recipient_email_address or self.recipient_email_address.empty?)
     errors.add_to_base("Enter a message for your friend") if self.recipient_email_address_checkbox == "1" and  (!self.email_from_message or self.email_from_message.empty?)
     errors.add_to_base("Enter your name") if self.recipient_email_address_checkbox == "1" and  (!self.email_from_name or self.email_from_name.empty?)
+    errors.add_to_base("Enter your email address") if self.receipt_notification and (!self.receipt_notification_email or self.receipt_notification_email.empty?)
   end
   
   # Validation for the different difficulty options

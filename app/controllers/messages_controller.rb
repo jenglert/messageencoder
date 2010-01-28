@@ -1,15 +1,31 @@
 class MessagesController < ApplicationController
   
   after_filter :send_message_alert_email, :only => :show_dispersal_information
+  after_filter :send_guess_correct_email, :only => :guess
+  
+  def send_guess_correct_email
+    if !@message.receipt_notification_sent and @message.receipt_notification_email and !@message.receipt_notification_email.empty? and is_guess_correct?(params, @message)
+      UserMailer.deliver_correct_guess_alert @message
+      @message.update_attribute :receipt_notification_sent, true
+    end
+    
+  rescue Exception => e
+    logger.error "Unable to send guess correct email: #{e.message}"
+  end
   
   def send_message_alert_email
-    if @message.recipient_email_address
+    if @message.recipient_email_address and !@message.recipient_email_address.empty?
       UserMailer.deliver_message_alert @message
     end
+    
+  rescue Exception => e
+    logger.error "Unable to send alert email: #{e.message}"
   end
   
   def new
     @message = Message.new( :recipient_email_address_checkbox => "0" )
+    
+    @popup_ad = PopupAd.find(:all, :limit => 1, :order => "Random()").first()
     
     if params[:message]
       @message.message = params[:message]
@@ -32,6 +48,10 @@ class MessagesController < ApplicationController
     @message = Message.find_by_id(params[:id])
   end
   
+  def index
+    redirect_to '/'
+  end
+  
   def show
     @message = Message.find_by_id(params[:id])
     
@@ -45,12 +65,16 @@ class MessagesController < ApplicationController
   def guess
     @message = Message.find_by_id(params[:id])
     
-    if params[:guess].upcase != @message.answer.upcase
+    if !is_guess_correct?(params, @message)
       flash[:errors] = 'Incorrect guess'
       session[:incorrect_guess_made] = true
       redirect_to @message
     end
     
     
+  end
+  
+  def is_guess_correct?(params, message)
+    params[:guess].upcase == message.answer.upcase
   end
 end

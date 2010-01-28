@@ -139,6 +139,22 @@
 					</span>
 				</div>
 			</div>
+			
+			<div class="receiptNotification">
+				<%= f.check_box :receipt_notification, :onchange => 'javascript:hideShowReceiptNotification()' %>
+				<label for="receipt_notification">Notify Me When They Get It</label>
+				<div class="small note">(We'll email you if they get the guess correctly!)</div>
+				<div class="receiptNotificationEmail <%= @message.receipt_notification ? '' : 'displayNone' %>">
+					your email: <%= f.text_field :receipt_notification_email %>
+				</div>
+			</div>
+			
+			<% if @popup_ad %>
+				<div class="popupAd">
+					<input type="checkbox" id="popupadcheckbox">
+					<%= @popup_ad.call_to_action %>
+				</div>
+			<% end %>
 			<%= submit_tag 'Twist That Txt', :class => 'submit' %>
 		</div>
 		<div class="clearBoth"></div>
@@ -146,3 +162,9 @@
 	<% end %>
 
 </div>
+
+<% if @popup_ad %>
+	<script type="text/javascript">
+	 	addPopupAdHandler('<%= @popup_ad.url %>'); 
+	</script>
+<% end %>

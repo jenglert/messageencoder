@@ -1,0 +1,24 @@
+<h1>Listing popup_ads</h1>
+
+<table>
+  <tr>
+    <th>Cpl</th>
+    <th>Call to action</th>
+    <th>Url</th>
+  </tr>
+
+<% @popup_ads.each do |popup_ad| %>
+  <tr>
+    <td><%=h popup_ad.cpl %></td>
+    <td><%=h popup_ad.call_to_action %></td>
+    <td><%=h popup_ad.url %></td>
+    <td><%= link_to 'Show', popup_ad %></td>
+    <td><%= link_to 'Edit', edit_popup_ad_path(popup_ad) %></td>
+    <td><%= link_to 'Destroy', popup_ad, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New popup_ad', new_popup_ad_path %>
