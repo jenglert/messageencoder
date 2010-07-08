@@ -4,7 +4,7 @@ class Message < ActiveRecord::Base
   
   MESSAGE_DIFFICULTIES = { 1 => "Easy", 2 => "Medium", 3 => "Hard" }
   
-  attr_accessor :recipient_email_address_checkbox
+  attr_accessor :recipient_email_address_checkbox, :easy
   
   validates_presence_of :message
   validates_presence_of :question

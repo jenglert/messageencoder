@@ -14,7 +14,7 @@
 					<%= f.text_area :message, :class => 'resizable' %>
 				</div>
 			</div>
-			<% if (!@easy) then %>
+			<% if (!@message.easy) then %>
 			<div class="section">
 				<div class="difficulty">
 					<div class="instruction">
@@ -69,11 +69,12 @@
 			<% else %>
 				<%= hidden_field :message, :difficulty %>
 			<% end %>
+			<%= hidden_field :message, :easy %>
 			
 			<div class="lastOutlinedSection">
 				
 				<div class="instruction">
-					<span class="step">Step #<%= @easy ? '2' : '3'%></span>Choose a secret question and answer
+					<span class="step">Step #<%= @message.easy ? '2' : '3'%></span>Choose a secret question and answer
 				</div>	
 			
 				<div class="questionAndAnswer">
@@ -88,7 +89,7 @@
 						</div>
 					</div>
 
-					<div class="multipleChoiceAnswers <%= @easy ? '' : show_iff_param_equals('message.difficulty', '2') %>">
+					<div class="multipleChoiceAnswers <%= @message.easy ? '' : show_iff_param_equals('message.difficulty', '2') %>">
 						<% for num in 1..6 %>
 							<div class="answer answer<%= num + 1 %> <%= show_message_answer(@message, num + 1) ? '' : 'displayNone' %>">
 								<%= (num).human_readable_numbering %> <span class="wrongAnswer">Wrong</span> Answer:

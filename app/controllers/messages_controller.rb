@@ -23,11 +23,9 @@ class MessagesController < ApplicationController
   end
   
   def new
-    @message = Message.new( :recipient_email_address_checkbox => "0", :difficulty => "1" )
+    @message = Message.new( :recipient_email_address_checkbox => "0", :difficulty => "1", :easy => false )
     
     @popup_ad = PopupAd.find(:all, :limit => 1, :order => "Rand()").first()
-    
-    @easy = false
     
     if params[:message]
       @message.message = params[:message]
@@ -36,11 +34,9 @@ class MessagesController < ApplicationController
   end
   
   def easy
-    @message = Message.new( :recipient_email_address_checkbox => "0", :difficulty => "2" )
+    @message = Message.new( :recipient_email_address_checkbox => "0", :difficulty => "1", :easy => true )
     
     @popup_ad = PopupAd.find(:all, :limit => 1, :order => "Rand()").first()
-    
-    @easy = true
     
     if params[:message]
       @message.message = params[:message]
