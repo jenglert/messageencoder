@@ -86,6 +86,8 @@ module ApplicationHelper
   
   # Returns displayNone iff the model parameters does not equal the value.
   def show_iff_param_equals(model, value)
+    puts 'checking:' + model_param(model).to_s + " : " + value
+    
     model_param(model) == value ? '' : 'displayNone'
   end
   

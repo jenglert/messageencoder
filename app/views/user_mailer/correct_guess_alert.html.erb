@@ -5,16 +5,16 @@
 	<body>  
 		<h1>Your Message Was Decoded</h1>
 		<p>  
-			<a href="<%= @message.short_url %>">Click here</a> to see the message you had sent.
+			<a href="<%= @message.short_url %>?utm_source=site&utm_medium=email&utm_campaign=correct_guess_alert">Click here</a> to see the message you had sent.
 		</p>
 		<p>
 			Full link here: <%= @message.short_url %>
 		</p>
 		<p>
-			<a href="http://www.twistedtxt.com">Send another message!</a>
+			<a href="http://www.twistedtxt.com?utm_source=site&utm_medium=email&utm_campaign=correct_guess_alert">Send another message!</a>
 		</p>
 		<p>
-			<a href="http://twistedtxt.com">TwistedTxt.com</a> is a service that lets you send encoded messages to your friends.  They will need to answer a question proving they are worthy to get your message!
+			<a href="http://twistedtxt.com?utm_source=site&utm_medium=email&utm_campaign=correct_guess_alert">TwistedTxt.com</a> is a service that lets you send encoded messages to your friends.  They will need to answer a question proving they are worthy to get your message!
 		</p>
 	</body>
 </html>

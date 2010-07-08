@@ -45,6 +45,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :messages
   
+  map.connect '/easy', :controller => 'messages', :action => 'easy'
   map.root :controller => "messages", :action => "new"
   
   map.connect ':controller/:action/:id'

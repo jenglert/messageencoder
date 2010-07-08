@@ -86,7 +86,7 @@ function addPopupAdHandler(url) {
 	if (jQuery("FORM #popupadcheckbox").exists()) {
 		jQuery("FORM#new_message")[0].onsubmit = function() {
 			if (jQuery("FORM #popupadcheckbox").checked()) {
-				window.open(url, 'popupAd', 'height=500,width=800');
+				window.open(url, 'popupAd', 'height=500,width=800,scrollbars,resizable');
 				
 				return true;
 			}

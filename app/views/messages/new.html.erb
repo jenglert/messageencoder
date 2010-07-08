@@ -1,6 +1,6 @@
 <div class="createSecretMessage">
 	<h1>Twist That Text</h1>
-	<h2 class="overview">Send your friends a secret encoded message. They will need to know something about you to decode the message!</h2>
+	<h2 class="overview">Send your friends a secret encoded message. It's quick an fun. They will need to answer a question you supply to prove they know you!</h2>
 	<%= custom_error_message_for @message %>
 	<% form_for @message do |f| %>
 
@@ -14,7 +14,7 @@
 					<%= f.text_area :message, :class => 'resizable' %>
 				</div>
 			</div>
-			
+			<% if (!@easy) then %>
 			<div class="section">
 				<div class="difficulty">
 					<div class="instruction">
@@ -24,12 +24,14 @@
 				</div>
 				<div id="difficultInstruction" class="difficultyInstruction">
 					<div class="noneDifficulty <%= show_iff_param_doesnt_exists 'message.difficulty' %>">
-						<div class="difficultyHeader none">
-							Select a difficulty
+						<div class="difficultyHeader easy">
+							Easy
 						</div>
-						<div class="moreInfoAboutSelection">
-							We'll tell you about the different choices here
-						</div>
+						<ol>
+							<li>Multiple choice</li>
+							<li>Try only once</li>
+							<li>Pretty easy... huh?</li>
+						</ol>
 					</div>
 					<div class="easyDifficulty <%= show_iff_param_equals 'message.difficulty', '1' %>">
 						<div class="difficultyHeader easy">
@@ -58,17 +60,20 @@
 						<ol>
 							<li>Exact match required</li>
 							<li>No hints</li>
-							<li>Capitalization not req.</li>
+							<li>Capitalization not required</li>
 						</ol>
 					</div>
 				</div>
 				<div class="clearBoth"></div>
 			</div>
+			<% else %>
+				<%= hidden_field :message, :difficulty %>
+			<% end %>
 			
 			<div class="lastOutlinedSection">
 				
 				<div class="instruction">
-					<span class="step">Step #3</span>Choose a secret question and answer
+					<span class="step">Step #<%= @easy ? '2' : '3'%></span>Choose a secret question and answer
 				</div>	
 			
 				<div class="questionAndAnswer">
@@ -83,7 +88,7 @@
 						</div>
 					</div>
 
-					<div class="multipleChoiceAnswers <%= show_iff_param_equals 'message.difficulty', '1' %>">
+					<div class="multipleChoiceAnswers <%= @easy ? '' : show_iff_param_equals('message.difficulty', '2') %>">
 						<% for num in 1..6 %>
 							<div class="answer answer<%= num + 1 %> <%= show_message_answer(@message, num + 1) ? '' : 'displayNone' %>">
 								<%= (num).human_readable_numbering %> <span class="wrongAnswer">Wrong</span> Answer:
@@ -115,13 +120,16 @@
 					</div>
 				</div>
 			</div>
+			
 		</div>
+
+		
 		<div class="options floatRight">
 			<div class="step">Additional Options</div>
 			
 			<div class="sendRecipientEmail">
 				<%= f.check_box :recipient_email_address_checkbox, :onchange => "javascript:hideShowRecipientEmail()" %>
-					<label for="message_recipient_email_address_checkbox">Email Your Friend</label>
+					<label for="message_recipient_email_address_checkbox">Email your friend</label>
 				<div class="small note">(We'll let your friend know they have a message waiting)</div>
 				<div class="recipientEmail showOnRecipientEmail <%= @message.recipient_email_address_checkbox == "1" ? '' : 'displayNone' %>">
 					<span title="Enter your friend's email address so we can let them know they have a secret message waiting">
@@ -142,7 +150,7 @@
 			
 			<div class="receiptNotification">
 				<%= f.check_box :receipt_notification, :onchange => 'javascript:hideShowReceiptNotification()' %>
-				<label for="receipt_notification">Notify Me When They Get It</label>
+				<label for="receipt_notification">Notify me when they get it</label>
 				<div class="small note">(We'll email you if they get the guess correctly!)</div>
 				<div class="receiptNotificationEmail <%= @message.receipt_notification ? '' : 'displayNone' %>">
 					your email: <%= f.text_field :receipt_notification_email %>

@@ -8,16 +8,16 @@
 			<%= @message.email_from_name %> says:<br /> "<%=@message.email_from_message.htmlize() %>"
 		</p>
 		<p>  
-			Visit this <a href="<%= @message.short_url %>">link</a> to get your secret message!
+			Visit this <a href="<%= @message.short_url %>?utm_source=site&utm_medium=email&utm_campaign=message_alert">link</a> to get your secret message!
 		</p>
 		<p>
 			Full link here: <%= @message.short_url %>
 		</p>
 		<p>
-			<a href="http://www.twistedtxt.com">Send a message back!</a>
+			<a href="http://www.twistedtxt.com?utm_source=site&utm_medium=email&utm_campaign=message_alert">Send a message back!</a>
 		</p>
 		<p>
-			<a href="http://twistedtxt.com">TwistedTxt.com</a> is a service that lets you send encoded messages to your friends.  They will need to answer a question proving they are worthy to get your message!
+			<a href="http://twistedtxt.com?utm_source=site&utm_medium=email&utm_campaign=message_alert">TwistedTxt.com</a> is a service that lets you send encoded messages to your friends.  They will need to answer a question proving they are worthy to get your message!
 		</p>
 	</body>
 </html> 

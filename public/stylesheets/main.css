@@ -21,7 +21,7 @@ FORM        { padding: 0; margin: 0;          }
 IMG.logo       { margin: auto; display: block; }
 .topBorder     { margin: auto; display: block; }
 .bottomBorder  { margin: auto; display: block; }
-.overview      { font-size: 15px; color: gray; padding: 0 0 15px 0; }
+.overview      { font-size: 15px; color: #333; padding: 0 0 3px 0; }
 .flashErrors   { color: red; padding-left: 2px; }
 .flashMessages { padding-left: 2px; padding-bottom: 10px; }
 .bottomAd      { text-align: center; padding-top: 30px; }

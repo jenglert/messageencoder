@@ -23,14 +23,31 @@ class MessagesController < ApplicationController
   end
   
   def new
-    @message = Message.new( :recipient_email_address_checkbox => "0" )
+    @message = Message.new( :recipient_email_address_checkbox => "0", :difficulty => "1" )
     
-    @popup_ad = PopupAd.find(:all, :limit => 1, :order => "Random()").first()
+    @popup_ad = PopupAd.find(:all, :limit => 1, :order => "Rand()").first()
+    
+    @easy = false
     
     if params[:message]
       @message.message = params[:message]
       flash[:messages] = "Just fill out these couple of options to send your message"
     end
+  end
+  
+  def easy
+    @message = Message.new( :recipient_email_address_checkbox => "0", :difficulty => "2" )
+    
+    @popup_ad = PopupAd.find(:all, :limit => 1, :order => "Rand()").first()
+    
+    @easy = true
+    
+    if params[:message]
+      @message.message = params[:message]
+      flash[:messages] = "Just fill out these couple of options to send your message"
+    end
+    
+    render 'new'
   end
   
   def create
